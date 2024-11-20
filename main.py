@@ -5,18 +5,18 @@ import time
 # Animation speed, the lower the value, the faster the animation
 SPEED_OF_ANIMATION = 0.1
 
-# Create a Tkinter window for the user interface
+
 app_window = tk.Tk()
 app_window.title("Sorting Algorithm Visualizer - Created by Shivi Goyal")
 app_window.config(bg="lavender")  # Updated background color to lavender
 
-# Set dimensions for the canvas
+
 canvas_width = 800
 canvas_height = 400
-canvas_area = tk.Canvas(app_window, width=canvas_width, height=canvas_height, bg="lavender")  # Canvas background set to lavender
+canvas_area = tk.Canvas(app_window, width=canvas_width, height=canvas_height, bg="lavender")  
 canvas_area.pack()
 
-# Generate a list of random values to be sorted
+
 def generate_random_values():
     return [random.randint(10, canvas_height) for _ in range(50)]
 
@@ -34,9 +34,9 @@ def render_array(arr, highlight_indices=[]):
         # Color bars based on their status:
         # Green if sorted, Red if in wrong order, Blue while sorting
         if i in highlight_indices:
-            color = "red"  # Elements being compared or swapped
+            color = "red"  # Elements when swapped
         else:
-            color = "blue"  # Default color while doing the sorting steps
+            color = "blue"  # Default color 
         
         # Once fully sorted, turn the bars green
         if arr == sorted(arr):  # The array is fully sorted
@@ -52,10 +52,10 @@ def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         for j in range(0, n-i-1):
-            render_array(arr, highlight_indices=[j, j+1])  # Highlighting the pair being compared
+            render_array(arr, highlight_indices=[j, j+1])  
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
-                render_array(arr)  # Show the swap action
+                render_array(arr)  
     render_array(arr)  # Final rendering after sorting
 
 # Insertion Sort Implementation
@@ -66,9 +66,9 @@ def insertion_sort(arr):
         while j >= 0 and key < arr[j]:
             arr[j + 1] = arr[j]
             j -= 1
-            render_array(arr)  # Show the array with the shifting action
+            render_array(arr)
         arr[j + 1] = key
-        render_array(arr)  # Show the array after inserting the key
+        render_array(arr)  
     render_array(arr)
 
 # Selection Sort Implementation
@@ -79,7 +79,7 @@ def selection_sort(arr):
             if arr[j] < arr[min_idx]:
                 min_idx = j
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
-        render_array(arr)  # Show the array after each swap
+        render_array(arr) 
     render_array(arr)
 
 # Merge Sort Implementation
@@ -115,7 +115,7 @@ def quick_sort(arr):
             if arr[j] < pivot:
                 i += 1
                 arr[i], arr[j] = arr[j], arr[i]
-                render_array(arr)  # Show the array with the swapped elements
+                render_array(arr) 
         arr[i + 1], arr[high] = arr[high], arr[i + 1]
         render_array(arr)
         return i + 1
@@ -129,7 +129,7 @@ def quick_sort(arr):
     quick_sort_recursive(0, len(arr) - 1)
     render_array(arr)
 
-# Algorithm map to their corresponding complexities
+# Algorithm's and their corresponding complexities
 algorithm_data = {
     "Bubble Sort": {
         "function": bubble_sort,
